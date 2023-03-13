@@ -1,13 +1,13 @@
 {
   "name": "moircastudioslauncher",
-  "version": "1.0.0",
+  "version": "1.9.0",
   "productName": "Moirca Studios Launcher",
-  "description": "Custom Minecraft Launcher",
-  "author": "MOIRCA Studios (https://github.com/Albertii04/)",
+  "description": "Modded Minecraft Launcher",
+  "author": "Albertii04 (https://github.com/albertii04/)",
   "license": "UNLICENSED",
-  "homepage": "https://github.com/Albertii04/Moirca-Studios-Launcher.git",
+  "homepage": "https://github.com/Albertii04/Moirca-Studios-Launcher",
   "bugs": {
-    "url": "https://github.com/Albertii04/Moirca-Studios-Launcher.git/issues"
+    "url": "https://github.com/Albertii04/Moirca-Studios-Launcher/issues"
   },
   "private": true,
   "main": "index.js",
