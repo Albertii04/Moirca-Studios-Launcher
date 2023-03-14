@@ -547,7 +547,7 @@ exports.pullRemote = function(){
         return exports.pullLocal()
     }
     return new Promise((resolve, reject) => {
-        const distroURL = 'https://gist.githubusercontent.com/Albertii04/af49f3d49134ef419b90179d17e633fe/raw/'
+        const distroURL = 'https://raw.githubusercontent.com/Albertii04/albertii04.github.io/main/mods/user_side/distribution.json'
         //const distroURL = 'https://gist.githubusercontent.com/dscalzi/53b1ba7a11d26a5c353f9d5ae484b71b/raw/'
         const opts = {
             url: distroURL,
