@@ -1,5 +1,7 @@
-./app/assets/js/distromanager.js linea 550 y substituir el link por el nuevo
-luego hacer "npm start"
+
+# Intrucciones:
+
+Hacer "npm start"
 
 
 --------------------
