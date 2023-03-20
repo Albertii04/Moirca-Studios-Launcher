@@ -1704,9 +1704,16 @@ input:checked + .toggleSwitchSlider:before {
 }
 
 /* Mod elements sub-containers. */
-#settingsReqModsContainer,
-#settingsOptModsContainer,
+#settingsReqModsContainer{
+    display: block;
+    padding-bottom: 25px;
+}
+#settingsOptModsContainer {
+    display: none;
+    padding-bottom: 25px;
+}
 #settingsDropinModsContainer {
+    display: none;
     padding-bottom: 25px;
 }
 
@@ -1855,11 +1862,12 @@ input:checked + .toggleSwitchSlider:before {
     color: lightgrey;
     font-weight: bold;
     width: 89%;
+    display: none;
 }
 
 /* Wrapper container. */
 #settingsShaderpackWrapper {
-    display: flex;
+    display: none;
 }
 
 /* Button to add shaderpacks. */
@@ -1873,18 +1881,21 @@ input:checked + .toggleSwitchSlider:before {
     font-size: 14px;
     padding: 6px 11px;
     margin-right: 5px;
+    display: none;
 }
 #settingsShaderpackButton:hover,
 #settingsShaderpackButton:focus,
 #settingsShaderpackButton[drag] {
     background: rgba(54, 54, 54, 0.25);
     text-shadow: 0px 0px 20px white;
+    display: none;
 }
 
 /* Main select container. */
 .settingsSelectContainer {
     position: relative;
     width: 50%;
+    display: none;
 }
 
 /* Div which displays the selected option. */
