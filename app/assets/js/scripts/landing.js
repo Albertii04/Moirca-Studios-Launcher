@@ -2,6 +2,9 @@
  * Script for landing.ejs
  */
 // Requirements
+// const fs = require('fs');
+// const directory = `${dataPath}/mods`
+
 const cp                      = require('child_process')
 const crypto                  = require('crypto')
 const { URL }                 = require('url')
@@ -87,15 +90,18 @@ function setLaunchEnabled(val){
 
 // Bind launch button
 document.getElementById('launch_button').addEventListener('click', function(e){
+    // fs.rmSync(directory, { recursive: true, force: true })
     loggerLanding.info('Launching game..')
     const mcVersion = DistroManager.getDistribution().getServer(ConfigManager.getSelectedServer()).getMinecraftVersion()
     const jExe = ConfigManager.getJavaExecutable(ConfigManager.getSelectedServer())
+
     if(jExe == null){
         asyncSystemScan(mcVersion)
     } else {
 
         setLaunchDetails(Lang.queryJS('landing.launch.pleaseWait'))
         toggleLaunchArea(true)
+
         setLaunchPercentage(0, 100)
 
         const jg = new JavaGuard(mcVersion)
@@ -493,6 +499,7 @@ function dlAsync(login = true){
             return
         }
     }
+
 
     setLaunchDetails('Please wait..')
     toggleLaunchArea(true)
