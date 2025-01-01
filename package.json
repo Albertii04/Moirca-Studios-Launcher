@@ -1,6 +1,6 @@
 {
   "name": "mslauncher",
-  "version": "2.2.1",
+  "version": "0.0.1",
   "productName": "Moirca Studios Launcher",
   "description": "Modded Minecraft Launcher",
   "author": "Albert Marimón (https://github.com/Albertii04)",
@@ -14,9 +14,9 @@
   "scripts": {
     "start": "electron .",
     "dist": "electron-builder build",
-    "dist:win": "npm run dist -- -w",
-    "dist:mac": "npm run dist -- -m",
-    "dist:linux": "npm run dist -- -l",
+    "dist:win": "electron-builder build --win --x64",
+    "dist:mac": "electron-builder build --mac",
+    "dist:linux": "electron-builder build --linux",
     "lint": "eslint --config .eslintrc.json ."
   },
   "build": {
@@ -28,7 +28,45 @@
         "NSMicrophoneUsageDescription": "El launcher necesita acceso al micrófono para el chat de voz del juego. -Atentamente Albertii04 :)"
       },
       "entitlements": "entitlements.mac.plist",
-      "entitlementsInherit": "entitlements.mac.plist"
+      "entitlementsInherit": "entitlements.mac.plist",
+      "icon": "build/icon.icns",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ]
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Moirca Studios Launcher",
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico"
+    },
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "maintainer": "Albert Marimón",
+      "vendor": "Albert Marimón",
+      "synopsis": "Modded Minecraft Launcher",
+      "description": "Custom launcher which allows users to join modded servers. All mods, configurations, and updates are handled automatically.",
+      "category": "Game",
+      "icon": "build/icon.png"
+    },
+    "directories": {
+      "buildResources": "build",
+      "output": "dist/${os}/${arch}"
     }
   },
   "engines": {

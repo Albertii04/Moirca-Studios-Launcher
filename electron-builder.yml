@@ -1,63 +1,78 @@
-appId: 'com.moircastudios.launcher'
-productName: 'Moirca Studios Launcher'
-artifactName: '${productName}-setup-${version}.${ext}'
+{
+  "appId": "com.moircastudios.launcher",
+  "productName": "Moirca Studios Launcher",
+  "artifactName": "${productName}-setup-${version}.${ext}",
+  "copyright": "Copyright © 2022-2025 Albert Marimón",
+  "asar": true,
+  "compression": "maximum",
+  "files": [
+    "!{dist,.gitignore,.vscode,docs,dev-app-update.yml,.nvmrc,.eslintrc.json}"
+  ],
+  "extraResources": [
+    "libraries"
+  ],
 
-copyright: 'Copyright © 2018-2024 Daniel Scalzi'
+  // Configuración de Windows
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": [
+          "x64"
+        ]
+      }
+    ],
+    "icon": "build/icon.ico"
+  },
 
-asar: true
-compression: 'maximum'
+  // Configuración del instalador de Windows
+  "nsis": {
+    "oneClick": false,
+    "perMachine": false,
+    "allowElevation": true,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "Moirca Studios Launcher",
+    "installerIcon": "build/icon.ico",
+    "uninstallerIcon": "build/icon.ico"
+  },
 
-files:
-  - '!{dist,.gitignore,.vscode,docs,dev-app-update.yml,.nvmrc,.eslintrc.json}'
+  // Configuración de macOS para generar tanto arm64 como x64
+  "mac": {
+    "target": [
+      {
+        "target": "dmg",  // Generar el archivo .dmg para macOS
+        "arch": [
+          "x64",    // Arquitectura x64
+          "arm64"   // Arquitectura ARM
+        ]
+      }
+    ],
+    "artifactName": "${productName}-${version}-${arch}.${ext}",
+    "category": "public.app-category.games",
+    "extendInfo": {
+      "NSMicrophoneUsageDescription": "El launcher necesita acceso al micrófono para el chat de voz del juego. -Atentamente Albertii04 :)"
+    },
+    "icon": "build/icon.icns"
+  },
 
-extraResources:
-  - 'libraries'
+  // Configuración de Linux
+  "linux": {
+    "target": [
+      "AppImage",
+      "deb"
+    ],
+    "maintainer": "Albert Marimón",
+    "vendor": "Albert Marimón",
+    "synopsis": "Modded Minecraft Launcher",
+    "description": "Custom launcher which allows users to join modded servers. All mods, configurations, and updates are handled automatically.",
+    "category": "Game",
+    "icon": "build/icon.png"
+  },
 
-# Windows Configuration
-win: 
-  target: 
-    - target: 'nsis'
-      arch: 
-        - 'x64'
-  icon: 'build/icon.ico'
-
-# Windows Installer Configuration
-nsis:
-  oneClick: false
-  perMachine: false
-  allowElevation: true
-  allowToChangeInstallationDirectory: true
-  createDesktopShortcut: true
-  createStartMenuShortcut: true
-  shortcutName: 'Moirca Studios Launcher'
-  installerIcon: 'build/icon.ico'
-  uninstallerIcon: 'build/icon.ico'
-
-# macOS Configuration
-mac:
-  target:
-    - target: 'dmg'
-      arch:
-        - 'x64'
-        - 'arm64'
-  artifactName: '${productName}-setup-${version}-${arch}.${ext}'
-  category: 'public.app-category.games'
-  extendInfo:
-    NSMicrophoneUsageDescription: 'El launcher necesita acceso al micrófono para el chat de voz del juego.'
-  icon: 'build/icon.icns'
-
-# Linux Configuration
-linux: 
-  target:
-    - 'AppImage'
-    - 'deb'
-  maintainer: 'Daniel Scalzi'
-  vendor: 'Daniel Scalzi'
-  synopsis: 'Modded Minecraft Launcher'
-  description: 'Custom launcher which allows users to join modded servers. All mods, configurations, and updates are handled automatically.'
-  category: 'Game'
-  icon: 'build/icon.png'
-
-directories:
-  buildResources: 'build'
-  output: 'dist'
+  "directories": {
+    "buildResources": "build",
+    "output": "dist"
+  }
+}

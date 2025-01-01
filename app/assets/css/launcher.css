@@ -2865,12 +2865,12 @@ input:checked + .toggleSwitchSlider:before {
 
 /* Logo container styles. */
 #image_seal_container {
-    display: none;
-    /* position: relative;
+    /* display: none; */
+    position: relative;
     height: 70px;
     width: 70px;
     border-radius: 50%;
-    margin-top: 50px; */
+    margin-top: 50px;
 }
 
 /* Logo container styles w/ update. */
