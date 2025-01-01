@@ -675,14 +675,6 @@ body, button {
 }
 
 
-.spinnerVideo {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin: auto;
-}
-
-
 .circle-loader {
     margin-left: 20px;
     border: 2px solid rgba(255, 255, 255, 0.5);
@@ -908,10 +900,6 @@ body, button {
     position: relative;
 }
 
-.waitingSpinner.video{
-    position: fixed;
-}
-/* 
 .waitingSpinner:before {
     transform: rotateX(60deg) rotateY(45deg) rotateZ(45deg);
     animation: 750ms rotateBefore infinite linear reverse;
@@ -926,9 +914,9 @@ body, button {
     content: '';
     display: block;
     position: fixed;
-    top: calc(50% - 5em); */
+    top: calc(50% - 5em);
     /* left: 50%; */
-    /* margin-top: -5em;
+    margin-top: -5em;
     margin-left: -5em;
     width: 10em;
     height: 10em;
@@ -938,8 +926,8 @@ body, button {
     perspective-origin: 50% 50%;
     perspective: 340px;
     background-size: 10em 10em;
-    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjI2NnB4IiBoZWlnaHQ9IjI5N3B4IiB2aWV3Qm94PSIwIDAgMjY2IDI5NyIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWxuczpza2V0Y2g9Imh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaC9ucyI+CiAgICA8dGl0bGU+c3Bpbm5lcjwvdGl0bGU+CiAgICA8ZGVzY3JpcHRpb24+Q3JlYXRlZCB3aXRoIFNrZXRjaCAoaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoKTwvZGVzY3JpcHRpb24+CiAgICA8ZGVmcz48L2RlZnM+CiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIiBza2V0Y2g6dHlwZT0iTVNQYWdlIj4KICAgICAgICA8cGF0aCBkPSJNMTcxLjUwNzgxMywzLjI1MDAwMDM4IEMyMjYuMjA4MTgzLDEyLjg1NzcxMTEgMjk3LjExMjcyMiw3MS40OTEyODIzIDI1MC44OTU1OTksMTA4LjQxMDE1NSBDMjE2LjU4MjAyNCwxMzUuODIwMzEgMTg2LjUyODQwNSw5Ny4wNjI0OTY0IDE1Ni44MDA3NzQsODUuNzczNDM0NiBDMTI3LjA3MzE0Myw3NC40ODQzNzIxIDc2Ljg4ODQ2MzIsODQuMjE2MTQ2MiA2MC4xMjg5MDY1LDEwOC40MTAxNTMgQy0xNS45ODA0Njg1LDIxOC4yODEyNDcgMTQ1LjI3NzM0NCwyOTYuNjY3OTY4IDE0NS4yNzczNDQsMjk2LjY2Nzk2OCBDMTQ1LjI3NzM0NCwyOTYuNjY3OTY4IC0yNS40NDkyMTg3LDI1Ny4yNDIxOTggMy4zOTg0Mzc1LDEwOC40MTAxNTUgQzE2LjMwNzA2NjEsNDEuODExNDE3NCA4NC43Mjc1ODI5LC0xMS45OTIyOTg1IDE3MS41MDc4MTMsMy4yNTAwMDAzOCBaIiBpZD0iUGF0aC0xIiBmaWxsPSIjZmZmZmZmIiBza2V0Y2g6dHlwZT0iTVNTaGFwZUdyb3VwIj48L3BhdGg+CiAgICA8L2c+Cjwvc3ZnPg==); */ */
-/* } */
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjI2NnB4IiBoZWlnaHQ9IjI5N3B4IiB2aWV3Qm94PSIwIDAgMjY2IDI5NyIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWxuczpza2V0Y2g9Imh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaC9ucyI+CiAgICA8dGl0bGU+c3Bpbm5lcjwvdGl0bGU+CiAgICA8ZGVzY3JpcHRpb24+Q3JlYXRlZCB3aXRoIFNrZXRjaCAoaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoKTwvZGVzY3JpcHRpb24+CiAgICA8ZGVmcz48L2RlZnM+CiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIiBza2V0Y2g6dHlwZT0iTVNQYWdlIj4KICAgICAgICA8cGF0aCBkPSJNMTcxLjUwNzgxMywzLjI1MDAwMDM4IEMyMjYuMjA4MTgzLDEyLjg1NzcxMTEgMjk3LjExMjcyMiw3MS40OTEyODIzIDI1MC44OTU1OTksMTA4LjQxMDE1NSBDMjE2LjU4MjAyNCwxMzUuODIwMzEgMTg2LjUyODQwNSw5Ny4wNjI0OTY0IDE1Ni44MDA3NzQsODUuNzczNDM0NiBDMTI3LjA3MzE0Myw3NC40ODQzNzIxIDc2Ljg4ODQ2MzIsODQuMjE2MTQ2MiA2MC4xMjg5MDY1LDEwOC40MTAxNTMgQy0xNS45ODA0Njg1LDIxOC4yODEyNDcgMTQ1LjI3NzM0NCwyOTYuNjY3OTY4IDE0NS4yNzczNDQsMjk2LjY2Nzk2OCBDMTQ1LjI3NzM0NCwyOTYuNjY3OTY4IC0yNS40NDkyMTg3LDI1Ny4yNDIxOTggMy4zOTg0Mzc1LDEwOC40MTAxNTUgQzE2LjMwNzA2NjEsNDEuODExNDE3NCA4NC43Mjc1ODI5LC0xMS45OTIyOTg1IDE3MS41MDc4MTMsMy4yNTAwMDAzOCBaIiBpZD0iUGF0aC0xIiBmaWxsPSIjZmZmZmZmIiBza2V0Y2g6dHlwZT0iTVNTaGFwZUdyb3VwIj48L3BhdGg+CiAgICA8L2c+Cjwvc3ZnPg==);
+}
 
 #waitingTextContainer {
     position: fixed;
@@ -1716,16 +1704,9 @@ input:checked + .toggleSwitchSlider:before {
 }
 
 /* Mod elements sub-containers. */
-#settingsReqModsContainer{
-    display: block;
-    padding-bottom: 25px;
-}
-#settingsOptModsContainer {
-    display: none;
-    padding-bottom: 25px;
-}
+#settingsReqModsContainer,
+#settingsOptModsContainer,
 #settingsDropinModsContainer {
-    display: none;
     padding-bottom: 25px;
 }
 
@@ -1874,12 +1855,11 @@ input:checked + .toggleSwitchSlider:before {
     color: lightgrey;
     font-weight: bold;
     width: 89%;
-    display: none;
 }
 
 /* Wrapper container. */
 #settingsShaderpackWrapper {
-    display: none;
+    display: flex;
 }
 
 /* Button to add shaderpacks. */
@@ -1893,21 +1873,18 @@ input:checked + .toggleSwitchSlider:before {
     font-size: 14px;
     padding: 6px 11px;
     margin-right: 5px;
-    display: none;
 }
 #settingsShaderpackButton:hover,
 #settingsShaderpackButton:focus,
 #settingsShaderpackButton[drag] {
     background: rgba(54, 54, 54, 0.25);
     text-shadow: 0px 0px 20px white;
-    display: none;
 }
 
 /* Main select container. */
 .settingsSelectContainer {
     position: relative;
     width: 50%;
-    display: none;
 }
 
 /* Div which displays the selected option. */
@@ -2881,19 +2858,19 @@ input:checked + .toggleSwitchSlider:before {
     height: 70px;
     width: auto;
     position: relative;
-    border: 3px solid #ffffff00;
-    box-sizing: content-box;
-    border-radius: 20%;
-    opacity: 30%;
+    border: 2px solid white;
+    box-sizing: border-box;
+    border-radius: 50%;
 }
 
 /* Logo container styles. */
 #image_seal_container {
-    position: relative;
+    display: none;
+    /* position: relative;
     height: 70px;
     width: 70px;
     border-radius: 50%;
-    margin-top: 50px;
+    margin-top: 50px; */
 }
 
 /* Logo container styles w/ update. */
@@ -3215,7 +3192,7 @@ input:checked + .toggleSwitchSlider:before {
 .bot_divider {
     height: 25px;
     width: 2px;
-    background: rgba(107, 105, 105, 0.7);
+    background: rgba(107, 105, 105, 0);
     margin-left: 20px;
     margin-right: 20px;
 }
@@ -3241,9 +3218,10 @@ input:checked + .toggleSwitchSlider:before {
 
 /* Wrapper container for the mojang status bar. */
 #mojangStatusWrapper {
-    position: relative;
+    display: none;
+    /* position: relative;
     display: flex;
-    cursor: pointer;
+    cursor: pointer; */
 }
 
 /* Icon which displays the status of the mojang services. */
@@ -3348,10 +3326,12 @@ input:checked + .toggleSwitchSlider:before {
 
 /* Button which opens the news view. */
 #newsButton {
-    background: none;
+    display: none;
+    /* background: none;
     border: none;
     cursor: pointer;
-    outline: none;
+    outline: none; */
+
 }
 #newsButton:hover #newsButtonText,
 #newsButton:focus #newsButtonText {
@@ -3796,6 +3776,7 @@ input:checked + .toggleSwitchSlider:before {
     font-size: 10px;
     line-height: 10px;
     font-weight: bold;
+    text-align: left;
 }
 
 /* Content container for the server listing's information. */

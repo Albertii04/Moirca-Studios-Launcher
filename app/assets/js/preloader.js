@@ -1,71 +1,81 @@
-const {ipcRenderer}  = require('electron')
-const fs             = require('fs-extra')
-const os             = require('os')
-const path           = require('path')
+const { ipcRenderer } = require('electron');
+const fs = require('fs-extra');
+const os = require('os');
+const path = require('path');
 
-const ConfigManager  = require('./configmanager')
-const DistroManager  = require('./distromanager')
-const LangLoader     = require('./langloader')
-const { LoggerUtil } = require('helios-core')
+const ConfigManager = require('./configmanager');
+const { DistroAPI } = require('./distromanager');
+const LangLoader = require('./langloader');
+const { LoggerUtil } = require('helios-core');
+// eslint-disable-next-line no-unused-vars
+const { HeliosDistribution } = require('helios-core/common');
 
-const logger = LoggerUtil.getLogger('Preloader')
+const logger = LoggerUtil.getLogger('Preloader');
 
-logger.info('Loading..')
+logger.info('Loading..');
 
 // Load ConfigManager
-ConfigManager.load()
+ConfigManager.load();
+
+// Yuck!
+// TODO Fix this
+DistroAPI['commonDir'] = ConfigManager.getCommonDirectory();
+DistroAPI['instanceDir'] = ConfigManager.getInstanceDirectory();
 
 // Load Strings
-LangLoader.loadLanguage('en_US')
+LangLoader.setupLanguage();
 
-function onDistroLoad(data){
-    if(data != null){
-        
+/**
+ * @param {HeliosDistribution} data
+ */
+function onDistroLoad(data) {
+    if (data != null) {
         // Resolve the selected server if its value has yet to be set.
-        if(ConfigManager.getSelectedServer() == null || data.getServer(ConfigManager.getSelectedServer()) == null){
-            logger.info('Determining default selected server..')
-            ConfigManager.setSelectedServer(data.getMainServer().getID())
-            ConfigManager.save()
+        if (ConfigManager.getSelectedServer() == null || data.getServerById(ConfigManager.getSelectedServer()) == null) {
+            logger.info('Determining default selected server..');
+            ConfigManager.setSelectedServer(data.getMainServer().rawServer.id);
+            ConfigManager.save();
         }
     }
-    ipcRenderer.send('distributionIndexDone', data != null)
+    ipcRenderer.send('distributionIndexDone', data != null);
 }
 
 // Ensure Distribution is downloaded and cached.
-DistroManager.pullRemote().then((data) => {
-    logger.info('Loaded distribution index.')
+DistroAPI.getDistribution()
+    .then(heliosDistro => {
+        logger.info('Loaded distribution index.');
 
-    onDistroLoad(data)
-
-}).catch((err) => {
-    logger.info('Failed to load distribution index.')
-    logger.error(err)
-
-    logger.info('Attempting to load an older version of the distribution index.')
-    // Try getting a local copy, better than nothing.
-    DistroManager.pullLocal().then((data) => {
-        logger.info('Successfully loaded an older version of the distribution index.')
-
-        onDistroLoad(data)
-
-
-    }).catch((err) => {
-
-        logger.info('Failed to load an older version of the distribution index.')
-        logger.info('Application cannot run.')
-        logger.error(err)
-
-        onDistroLoad(null)
-
+        onDistroLoad(heliosDistro);
     })
+    .catch(err => {
+        logger.info('Failed to load an older version of the distribution index.');
+        logger.info('Application cannot run.');
+        logger.error(err);
 
-})
+        onDistroLoad(null);
+    });
 
-// Clean up temp dir incase previous launches ended unexpectedly. 
+// Clean up temp dir in case previous launches ended unexpectedly.
 fs.remove(path.join(os.tmpdir(), ConfigManager.getTempNativeFolder()), (err) => {
-    if(err){
-        logger.warn('Error while cleaning natives directory', err)
+    if (err) {
+        logger.warn('Error while cleaning natives directory', err);
     } else {
-        logger.info('Cleaned natives directory.')
+        logger.info('Cleaned natives directory.');
     }
-})
+});
+
+
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const launchButton = document.getElementById('launch_button');
+    if (launchButton) {
+        micButton.addEventListener('click', async () => {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                console.log('Acceso al micrófono concedido:', stream);
+            } catch (err) {
+                console.error('Acceso al micrófono denegado:', err);
+            }
+        });
+    }
+});

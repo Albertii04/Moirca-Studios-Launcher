@@ -1,0 +1,20 @@
+# Custom Language File for Launcher Customizer
+
+[ejs.app]
+title = "Moirca Studios Launcher"
+
+[ejs.landing]
+mediaGitHubURL = "https://github.com/dscalzi/HeliosLauncher"
+mediaTwitterURL = "#"
+mediaInstagramURL = "#"
+mediaYouTubeURL = "#"
+mediaDiscordURL = "https://discord.gg/zNWUXdt"
+
+[ejs.settings]
+sourceGithubLink = "https://github.com/dscalZi/HeliosLauncher"
+supportLink = "https://github.com/dscalZi/HeliosLauncher/issues"
+
+[ejs.welcome]
+welcomeHeader = "Bienvenido a los JW SquidCraft Games"
+welcomeDescription = "Nuestro objetivo es recrear fielmente la experiencia de juego que Neflix presentó en su serie 'Squid Games' al estilo de Eufonia Studio"
+welcomeDescCTA = "Estás a pocos clicks de entrar 👀."
